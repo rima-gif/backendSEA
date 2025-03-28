@@ -53,6 +53,10 @@ public class SecurityConfig {
                         .requestMatchers("/machines/{id}", "/machines/all").permitAll()
                         .requestMatchers("/radio-frequency/Add", "/radio-frequency/update/{id}", "/radio-frequency/delete/{id}").hasAuthority("ROLE_SUPER_ADMIN")
                         .requestMatchers("/radio-frequency/all", "/radio-frequency/{id}").permitAll()
+                        .requestMatchers("/mission/create").hasAuthority("ROLE_SUPER_ADMIN")
+                        .requestMatchers("/mission/{missionId}/start").hasAuthority("ROLE_SUPER_ADMIN")
+                        .requestMatchers("/mission/{missionId}/next-step").hasAuthority("ROLE_SUPER_ADMIN")
+                        .requestMatchers("/mission/{missionId}").hasAuthority("ROLE_SUPER_ADMIN")
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))  // Stateless
