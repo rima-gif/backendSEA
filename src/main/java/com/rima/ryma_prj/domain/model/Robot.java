@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name ="robot")
 @Getter
@@ -24,6 +27,9 @@ public class Robot {
         this.name = name;
         this.status = RobotStatus.DISCONNECTED; // Par défaut si non fourni
     }
+    @OneToMany(mappedBy = "robot", fetch = FetchType.LAZY)
+    private List<Mission> missions = new ArrayList<>();
+
     public Long getId() {
         return id;
     }
