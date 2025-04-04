@@ -22,6 +22,8 @@ public class Robot {
     @Enumerated(EnumType.STRING) //pour stocker le status sous forme de chaine dans la BD
     private RobotStatus status = RobotStatus.DISCONNECTED; // Valeur par défaut
 
+    private boolean enMission; // true =robot occupé,False=disponible
+
     // Constructeur avec le nom seulement
     public Robot(String name) {
         this.name = name;
@@ -52,5 +54,14 @@ public class Robot {
 
     public void setStatus(RobotStatus status) {
         this.status = status;
+    }
+
+    //partie enMission
+    public boolean isEnMission() {
+        return enMission;
+    }
+
+    public void setEnMission(boolean enMission) {
+        this.enMission = enMission;
     }
 }
